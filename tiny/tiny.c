@@ -170,7 +170,6 @@ int parse_uri(char *uri, char *filename, char *cgiargs)
     // '/' 뒤에 home.html을 붙여 해당 위치 해당 이름의 정적 컨텐츠가 출력된다.
     if (uri[strlen(uri)-1] == '/')
         strcat(filename, "home.html");
-        printf("filename = %s", filename);
 
     /* ex)
       uri : /godzilla.jpg
