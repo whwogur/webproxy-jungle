@@ -288,10 +288,18 @@ void echo(int connfd)
   size_t n;
   char buf[MAXLINE];
   rio_t rio;
-
+  /* 읽기 버퍼 rio와 서버의 connfd 연결해준다. clientfd도 연결되어있다.*/
   Rio_readinitb(&rio, connfd);
+
+  /* 읽기 버퍼 rio에서 클라이언트가 보낸 데이터를 읽고, rio에 그 데이터를 그대로 쓴다 */
+  /* 읽기 버퍼 rio에서 MAXLINE만큼의 데이터를 읽어와 buf에 넣는다 */
   while((n = Rio_readlineb(&rio, buf, MAXLINE)) != 0) {
     printf("server received %d bytes\n", (int)n);
+
+    /* buf 안에는 클라이언트가 보낸 데이터 그대로 있다 */
+    /* buf 메모리 안의 클라이언트가 보낸 데이터를 clientfd로 보낸다. */
     Rio_writen(connfd, buf, n);
   }
+
+  /* 클라이언트 식별자 닫히면 루프 및 함수 종료 */
 }
