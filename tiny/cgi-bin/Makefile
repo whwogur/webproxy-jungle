@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -O2 -Wall -I ..
 
-all: adder
+all: adder form-adder
 
 adder: adder.c
 	$(CC) $(CFLAGS) -o adder adder.c
