@@ -57,7 +57,7 @@ void doit(int fd)
   int is_static;
   struct stat sbuf;
   char buf[MAXLINE], method[MAXLINE], uri[MAXLINE], version[MAXLINE]; // 클라이언트에게서 받은 요청(rio)으로 채워진다.
-  char filename[MAXLINE], cgiargs[MAXLINE]; // pare_uri를 통해 채워진다
+  char filename[MAXLINE], cgiargs[MAXLINE]; // parse_uri를 통해 채워진다
   rio_t rio;
 
   /* Read request line and headers*/
