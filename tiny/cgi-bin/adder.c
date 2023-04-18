@@ -9,7 +9,7 @@ int main(){
     char arg1[MAXLINE], arg2[MAXLINE], content[MAXLINE];
     int n1=0, n2=0;
 
-    /* 자식 프로세스가 따로 만든 QUERT_STRING 환경변수를 getenv로 가져와 buf에 넣음 */
+    /* 자식 프로세스가 따로 만든 QUERY_STRING 환경변수를 getenv로 가져와 buf에 넣음 */
     if((buf = getenv("QUERY_STRING")) != NULL){
         p = strchr(buf, '&'); // 포인터 p는 &가 있는 곳의 주소
         *p = '\0';      // &를 \0로 바꿔주고
