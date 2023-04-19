@@ -61,7 +61,7 @@ int main(int argc,char **argv)
  *          2) 엔드 서버에 보낼 요청 라인과 헤더를 만들 변수들을 만든다.
  *          3) 프록시 서버와 엔드 서버를 연결하고 엔드 서버의 응답 메시지를 클라이언트에게 준다.
 */
-/* handle the client HTTP transaction */
+/* handle client HTTP transaction */
 void doit(int connfd)
 {
   int end_serverfd; // 엔드 서버 디스크립터
