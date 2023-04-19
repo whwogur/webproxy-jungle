@@ -63,3 +63,5 @@ Mkfile.old
 dkms.conf
 
 form-adder
+.proxy
+.noproxy
