@@ -57,7 +57,7 @@ int main(int argc, char **argv)
 void *thread(void *vargp)
 {
     int connfd = (int)vargp;
-    Pthread_detach(pthread_self()); // 자기 자신 분리
+    Pthread_detach(pthread_self()); // detach - 독립적으로 자원 해제 하도록
     doit(connfd);
     Close(connfd);
 }
@@ -74,7 +74,7 @@ void doit(int connfd)
 
     rio_t rio, server_rio; /*rio is client's rio,server_rio is endserver's rio*/
 
-    /* 클라이언트가 보낸 요청 헤더에서 method, uri, version을 가져온다 */
+    /* 클라이언트가 보낸 요청 헤더에서 method, uri, HTTP version을 가져온다 */
     Rio_readinitb(&rio, connfd);
     Rio_readlineb(&rio, buf, MAXLINE);
     sscanf(buf, "%s %s %s", method, uri, version); /*read the client request line*/
@@ -171,7 +171,7 @@ void parse_uri(char *uri, char *hostname, char *path, int *port)
 
     pos = pos != NULL ? pos + 2 : uri;
 
-    char *pos2 = strstr(pos, ":");
+    char *pos2 = strstr(pos, ":"); // haystack 에서 needle 포인터
     if (pos2 != NULL)
     {
         *pos2 = '\0';
